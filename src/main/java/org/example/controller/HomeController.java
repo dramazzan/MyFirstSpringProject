@@ -1,6 +1,7 @@
 package org.example.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.example.aspect.ToLogOurApp;
 import org.example.dto.CarDto;
 import org.example.dto.ClientDto;
 import org.example.model.Car;
@@ -19,6 +20,15 @@ public class HomeController {
     private final CarService carService;
     private final ClientService clientService;
 
+
+    @GetMapping("/hello/{name}")
+    @ToLogOurApp
+    public String hello(@PathVariable String name){
+        return "hello"+name+"!";
+    }
+
+
+
 //    Car Controller
 
     @GetMapping("/cars")
@@ -36,6 +46,7 @@ public class HomeController {
         return carService.buyCar(id);
     }
     @PostMapping("/createcar")
+
     public String createCar(@RequestBody Car car){
        return carService.createCar(car);
     }
@@ -47,6 +58,7 @@ public class HomeController {
     }
 
     @PostMapping("/addcar")
+    @ToLogOurApp
     public String addcar(@RequestBody CarDto carDto){
         return carService.addCar(carDto);
     }

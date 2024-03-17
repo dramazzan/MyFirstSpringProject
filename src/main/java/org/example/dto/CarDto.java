@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.example.model.Car;
+import org.example.model.Client;
 
 @Data
 @RequiredArgsConstructor
@@ -17,6 +18,7 @@ public class CarDto {
     private String color;
     private int price;
     private int amount;
+    private Client client;
 
 
 
