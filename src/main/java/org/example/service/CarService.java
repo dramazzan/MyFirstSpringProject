@@ -28,6 +28,7 @@ public class CarService {
             car.setYear(carDto.getYear());
             car.setColor(carDto.getColor());
             car.setPrice(carDto.getPrice());
+            car.setAmount(carDto.getAmount());
             repository.save(car);
         }catch (Exception e){
             return "Not ADDED" + e.getMessage();

@@ -15,6 +15,7 @@ public class CarDto {
     private int year;
     private String color;
     private int price;
+    private int amount;
 
 
 }

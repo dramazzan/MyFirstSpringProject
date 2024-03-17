@@ -2,8 +2,11 @@ package org.example.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.example.dto.CarDto;
+import org.example.dto.ClientDto;
 import org.example.model.Car;
+import org.example.model.Client;
 import org.example.service.CarService;
+import org.example.service.ClientService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,6 +17,10 @@ import java.util.List;
 public class HomeController {
 
     private final CarService carService;
+    private final ClientService clientService;
+
+//    Car Controller
+
     @GetMapping("/cars")
     public List<Car> getAllCar(){
         return carService.getCarList();
@@ -45,6 +52,28 @@ public class HomeController {
     }
 
 
+//    Client Controller
+
+    @GetMapping("/clients")
+    public List<Client> getClientList(){
+       return clientService.getClientList();
+    }
+
+    @GetMapping("/client/{id}")
+    public Client getClientById(@PathVariable Long id){
+       return clientService.getClientByID(id);
+    }
+
+
+    @PostMapping("/addclient")
+    public String addCar(@RequestBody Client client){
+        return clientService.addClient(client);
+    }
+
+    @PostMapping("/createclient")
+    public String createClient(@RequestBody ClientDto clientDto){
+        return clientService.createClient(clientDto);
+    }
 
 
 
