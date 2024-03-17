@@ -28,5 +28,9 @@ public class Car{
     @Column(name = "amount")
     private int amount;
 
+    @ManyToOne
+    @JoinColumn(name = "client_id")
+    private Client client;
+
 
 }

@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @RequiredArgsConstructor
@@ -23,4 +25,8 @@ public class Client {
     private String email;
     @Column(name = "number")
     private String phoneNumber;
+
+    @OneToMany(mappedBy = "client")
+    private List<Car> carList ;
+
 }
