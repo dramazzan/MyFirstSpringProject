@@ -1,2 +1,32 @@
-package org.example.model;public class Car {
+package org.example.model;
+
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
+
+@Entity
+@Table(name = "car_table")
+@Data
+@RequiredArgsConstructor
+public class Car{
+    @Id
+    @GeneratedValue
+    @Column(name = "id")
+    private long carID;
+    @Column(name = "brand")
+    private String brand;
+    @Column(name = "model")
+    private String model;
+    @Column(name = "year")
+    private int year;
+    @Column(name = "color")
+    private String color;
+    @Column(name = "price")
+    private int price;
+    @Column(name = "amount")
+    private int amount;
+
+
 }
