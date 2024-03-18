@@ -21,9 +21,9 @@ public class Client {
     private String clientName;
     @Column(name = "age")
     private int age;
-    @Column(name = "email")
+    @Column (unique = true)
     private String email;
-    @Column(name = "number")
+    @Column(unique = true)
     private String phoneNumber;
 
     @OneToMany(mappedBy = "client")

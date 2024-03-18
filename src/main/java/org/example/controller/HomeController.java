@@ -31,7 +31,7 @@ public class HomeController {
 
 //    Car Controller
 
-    @GetMapping("/cars")
+    @GetMapping("car/cars")
     public List<Car> getAllCar(){
         return carService.getCarList();
     }
@@ -41,23 +41,23 @@ public class HomeController {
         return carService.getCarById(id);
     }
 
-    @GetMapping("/buycar/{id}")
+    @GetMapping("car/buycar/{id}")
     public String buyCar(@PathVariable Long id){
         return carService.buyCar(id);
     }
-    @PostMapping("/createcar")
+    @PostMapping("car/createcar")
 
     public String createCar(@RequestBody Car car){
        return carService.createCar(car);
     }
 
-    @PostMapping("/deletecar/{id}")
-    public String deleteCar(@RequestBody Long id){
+    @GetMapping("car/deletecar/{id}")
+    public String deleteCar(@PathVariable Long id){
         return carService.deleteCar(id);
 
     }
 
-    @PostMapping("/addcar")
+    @PostMapping("car/addcar")
     @ToLogOurApp
     public String addcar(@RequestBody CarDto carDto){
         return carService.addCar(carDto);
@@ -66,7 +66,7 @@ public class HomeController {
 
 //    Client Controller
 
-    @GetMapping("/clients")
+    @GetMapping("client/clients")
     public List<Client> getClientList(){
        return clientService.getClientList();
     }
@@ -77,12 +77,12 @@ public class HomeController {
     }
 
 
-    @PostMapping("/addclient")
+    @PostMapping("client/addclient")
     public String addCar(@RequestBody Client client){
         return clientService.addClient(client);
     }
 
-    @PostMapping("/createclient")
+    @PostMapping("client/createclient")
     public String createClient(@RequestBody ClientDto clientDto){
         return clientService.createClient(clientDto);
     }
