@@ -6,6 +6,6 @@
 <body>
     <h1>Message</h1>
     <p>${message}</p>
-    <a href="/">next</a>
+    <a href="/">home</a>
 </body>
 </html>

@@ -51,9 +51,6 @@ public class CarService {
         return repository.findById(id).orElse(null);
     }
 
-
-
-
     public String buyCar(Long id) {
         Car car = getCarById(id);
         if (car != null) {

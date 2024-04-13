@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.lang.module.Configuration;
 import java.util.List;
 
 @Controller
@@ -17,10 +18,13 @@ import java.util.List;
 public class CarController {
 
     private final CarService carService;
-    @GetMapping("/car/cars")
-    public List<Car> getAllCar(){
-        return carService.getCarList();
+
+    @GetMapping("/car/carlist")
+    public String cars(Model model){
+        model.addAttribute("cars" , carService.getCarList());
+        return "carList";
     }
+
 
     @GetMapping("/car/{id}")
     public String carInfo(@PathVariable Long id , Model model ){
@@ -28,7 +32,7 @@ public class CarController {
         return "carInfo";
     }
 
-    @RequestMapping("/car/buycar/{id}")
+    @GetMapping("/car/buycar/{id}")
        public String buyCar(@PathVariable Long id , Model model){
         model.addAttribute("message" , carService.buyCar(id));
         return "message";
@@ -40,17 +44,17 @@ public class CarController {
 //        return "redirect:/";
 //    }
 
-
-
     @PostMapping("/car/createcar")
-    public String createProduct(Car car){
+    public String createCar(Car car){
         carService.createCar(car);
         return "redirect:/";
     }
 
-
-
-
+    @GetMapping("/car/confirm/{id}")
+    public String confirm(@PathVariable Long id , Model model){
+        model.addAttribute("carID" , carService.getCarById(id).getCarID());
+        return "confirm";
+    }
 
 
     @GetMapping("/car/deletecar/{id}")
@@ -59,6 +63,14 @@ public class CarController {
         return "redirect:/";
 
     }
+
+
+    @GetMapping("/addcarpage")
+    public String addCarPage(){
+        return "addCarPage";
+    }
+
+
 //
 //    @PostMapping("/car/addcar")
 //    @ToLogOurApp

@@ -13,18 +13,14 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class HomeController {
 
-//    @RequestMapping("/home")
-//    public String home(){
-//        return "homepage.html";
-//    }
-
     private final CarService carService;
 
     @GetMapping("/")
-    public String cars(Model model){
-        model.addAttribute("cars" , carService.getCarList());
-        return "home";
+    public String homepage(Model model){
+        model.addAttribute("cars", carService.getCarList());
+        return "homePage";
     }
+
 
 
 
