@@ -4,11 +4,15 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "car_table")
 @Data
 @RequiredArgsConstructor
-public class Car{
+public class Car {
     @Id
     @GeneratedValue
     @Column(name = "id")
@@ -30,5 +34,22 @@ public class Car{
     @JoinColumn(name = "client_id")
     private Client client;
 
+    @OneToMany(cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY,
+            mappedBy = "car")
+    private List<Image> images = new ArrayList<>();
+    private Long previewImageId;
+    private LocalDateTime dateOfCreated;
+
+    @PrePersist
+    private void init() {
+        dateOfCreated = LocalDateTime.now();
+    }
+
+
+    public void addImageToCar(Image img) {
+        img.setCar(this);
+        images.add(img);
+    }
 
 }

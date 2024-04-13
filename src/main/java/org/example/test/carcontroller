@@ -1,6 +1,8 @@
 package org.example.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.example.aspect.ToLogOurApp;
+import org.example.dto.CarDto;
 import org.example.model.Car;
 import org.example.service.CarService;
 import org.springframework.stereotype.Controller;
@@ -9,6 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.lang.module.Configuration;
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -18,26 +22,37 @@ public class CarController {
     private final CarService carService;
 
     @GetMapping("/car/carlist")
-    public String cars(Model model) {
-        model.addAttribute("cars", carService.getCarList());
+    public String cars(Model model){
+        model.addAttribute("cars" , carService.getCarList());
         return "carList";
     }
 
 
     @GetMapping("/car/{id}")
-    public String carInfo(@PathVariable Long id, Model model) {
+    public String carInfo(@PathVariable Long id , Model model ){
         Car car = carService.getCarById(id);
-        model.addAttribute("car", carService.getCarById(id));
-        model.addAttribute("images", car.getImages());
+        model.addAttribute("car" , carService.getCarById(id));
+        model.addAttribute("images" , car.getImages());
         return "carInfo";
     }
 
     @GetMapping("/car/buycar/{id}")
-    public String buyCar(@PathVariable Long id, Model model) {
-        model.addAttribute("message", carService.buyCar(id));
+       public String buyCar(@PathVariable Long id , Model model){
+        model.addAttribute("message" , carService.buyCar(id));
         return "message";
     }
 
+//    @RequestMapping("/car/buycar/{id}")
+//    public String buyCar(@PathVariable Long id){
+//        carService.buyCar(id);
+//        return "redirect:/";
+//    }
+
+//    @PostMapping("/car/createcar")
+//    public String createCar(Car car){
+//        carService.createCar(car);
+//        return "redirect:/";
+//    }
 
     @PostMapping("/car/create")
     public String createCar(@RequestParam("file1") MultipartFile file1,
@@ -49,14 +64,14 @@ public class CarController {
     }
 
     @GetMapping("/car/confirm/{id}")
-    public String confirm(@PathVariable Long id, Model model) {
-        model.addAttribute("carID", carService.getCarById(id).getCarID());
+    public String confirm(@PathVariable Long id , Model model){
+        model.addAttribute("carID" , carService.getCarById(id).getCarID());
         return "confirm";
     }
 
 
     @GetMapping("/car/deletecar/{id}")
-    public String deleteCar(@PathVariable Long id) {
+    public String deleteCar(@PathVariable Long id){
         carService.deleteCar(id);
         return "redirect:/";
 
@@ -64,9 +79,18 @@ public class CarController {
 
 
     @GetMapping("/addcarpage")
-    public String addCarPage() {
+    public String addCarPage(){
         return "addCarPage";
     }
+
+
+//
+//    @PostMapping("/car/addcar")
+//    @ToLogOurApp
+//    public String addcar(@RequestBody CarDto carDto){
+//        return carService.addCar(carDto);
+//    }
+//
 
 
 }
