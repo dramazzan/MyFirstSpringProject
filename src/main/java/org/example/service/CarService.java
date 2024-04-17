@@ -29,6 +29,7 @@ public class CarService {
 
     @Transactional
     public void saveCar(Car car, MultipartFile file1, MultipartFile file2, MultipartFile file3) throws IOException {
+        System.out.println(file1);
         Image image1;
         Image image2;
         Image image3;
@@ -53,7 +54,7 @@ public class CarService {
     private Image toImageEntity(MultipartFile file) throws IOException {
         Image image = new Image();
         image.setName(file.getOriginalFilename());
-        image.setOriginalFileName(file.getOriginalFilename());
+        image.setOriginalFileName(new String(file.getOriginalFilename().getBytes("UTF-8"), "UTF-8")); // Устанавливаем правильную кодировку
         image.setContentType(file.getContentType());
         image.setSize(file.getSize());
         image.setBytes(file.getBytes());
