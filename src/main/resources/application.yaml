@@ -20,6 +20,6 @@ spring:
 
 
   thymeleaf:
-    prefix: classpath:/templates/
+    prefix: classpath:/templates
 
 

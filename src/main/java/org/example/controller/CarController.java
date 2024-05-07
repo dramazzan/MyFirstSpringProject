@@ -58,7 +58,7 @@ public class CarController {
     @GetMapping("/car/deletecar/{id}")
     public String deleteCar(@PathVariable Long id) {
         carService.deleteCar(id);
-        return "redirect:/";
+        return "redirect:/car/carlist";
 
     }
 

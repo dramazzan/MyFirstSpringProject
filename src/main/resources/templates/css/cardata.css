@@ -1,0 +1,117 @@
+*{
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family: 'Poppins' , sans-serif;
+    height: 100vh;
+    display:flex;
+    justify-content: center;
+    color:#fff;
+    font-size: 22px;
+    padding: 20px;
+    background: rgb(63,94,251);
+    background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+}
+
+.carInfoBox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 70%;
+}
+
+.carInfoBox .navigate{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border:1px solid rgba(255,255,255,0.5);
+    padding: 5px 15px;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.navigate .controller{
+    display: flex;
+    align-items: center;
+    gap: 15px;;
+}
+
+.navigate a{
+    color:#fff;
+    text-decoration: none;
+    position: relative;
+    transition: 0.3s ease;
+}
+
+.navigate a::after{
+    content:"";
+    position: absolute;
+    background: #fff;
+    height: 1px;
+    width: 0;
+    bottom:0;
+    left:0;
+    transition: 0.3s ease;
+}
+
+.navigate a:hover::after{
+    width: 100%;
+    opacity: 0.8;
+}
+
+.carInfoBox .carInfo{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border:1px solid rgba(255,255,255,0.5);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+
+.carInfo .imageBox::-webkit-scrollbar{
+    display: none;
+}
+
+.carInfo .imageBox{
+    display: flex;
+    width: 400px;
+    border:1px solid rgba(255,255,255,0.5);
+    border-radius: 10px;
+    overflow-x: scroll ;
+}
+
+.imageBox img{
+    width: 100%;
+}
+
+.carInfo .carData{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 24px;
+}
+
+.carData .buyButton{
+    border:1px solid rgba(255,255,255,0.5);
+    padding: 4px 12px;
+    border-radius: 10px;
+    transition: 0.3s ease;
+
+    &:hover{
+        background: rgba(255,255,255,0.5);
+        color: rgba(0,0,0,0.2);
+    }
+
+}
+
+.buyButton a{
+    text-decoration: none;
+    color:#fff;
+    transition: 0.3s ease;
+
+}
