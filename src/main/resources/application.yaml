@@ -16,7 +16,13 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+    open-in-view: false
+    thymeleaf:
+      check-template-location: false
   thymeleaf:
     prefix: classpath:/templates
 
+token:
+  sign:
+    secret: SDBUIBEVE89VER3RV4387RUYBJ4YVB89P437VH47O3Q8G0743
 
