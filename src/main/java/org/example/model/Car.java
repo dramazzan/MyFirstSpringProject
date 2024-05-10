@@ -31,7 +31,7 @@ public class Car {
     private int amount;
 
     @OneToMany(cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY,
+            fetch = FetchType.EAGER,
             mappedBy = "car")
     private List<Image> images = new ArrayList<>();
     private Long previewImageId;

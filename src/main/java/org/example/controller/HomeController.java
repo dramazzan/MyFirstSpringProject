@@ -22,6 +22,13 @@ public class HomeController {
     }
 
 
+    @GetMapping("/profile")
+    public String profile(Model model) {
+        return "profile";
+    }
+
+
+
 
 
 
