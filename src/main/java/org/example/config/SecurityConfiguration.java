@@ -67,11 +67,11 @@ public class SecurityConfiguration {
                         .anyRequest().permitAll())
                 .sessionManagement(manager -> manager.sessionCreationPolicy(STATELESS))
                 .authenticationProvider(authenticationProvider())
-                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
-//                .formLogin(form->form
-//                        .loginPage("/auth/loginpage")
-//                        .permitAll()
-//                );
+                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+                .formLogin(form->form
+                        .loginPage("/auth/loginpage")
+                        .permitAll()
+                );
 
 
 
